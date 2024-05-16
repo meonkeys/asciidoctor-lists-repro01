@@ -29,7 +29,7 @@ SECONDS=0
 echo "🏗️	start at $(date)"
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-IMAGE_NAME=print-this
+IMAGE_NAME=asciidoctor-lists-repro01
 WORK_DIR=/usr/src/app/book
 GID="$(id -g)"
 GROUP="$(id -gn)"

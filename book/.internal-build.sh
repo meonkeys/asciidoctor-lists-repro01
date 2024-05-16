@@ -25,7 +25,7 @@ set -o nounset
 set -o pipefail
 
 echo '🖨️	typeset EPUB'
-title=print-this
+title=repro
 input=$title.adoc
 output=$title.epub
 asciidoctor-epub3 \
