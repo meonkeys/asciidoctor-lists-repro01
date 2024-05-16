@@ -24,18 +24,18 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-echo '🖨️	typeset print-ready PDF'
+echo '🖨️	typeset EPUB'
 title=print-this
 input=$title.adoc
-output=$title.pdf
-asciidoctor-pdf \
+output=$title.epub
+asciidoctor-epub3 \
     --attribute build_date_time="$BUILD_DATE_TIME" \
     --attribute build_locale_lang="$BUILD_LOCALE_LANG" \
     --attribute build_git_commit="$BUILD_GIT_COMMIT" \
     --attribute build_os_release="$BUILD_OS_RELEASE" \
     --warnings \
     --trace \
-    --require ./extensions.rb \
+    --require /usr/local/bundle/gems/asciidoctor-lists-1.0.9/lib/asciidoctor-lists.rb \
     --out-file $output \
     $input
 echo "💾	wrote $output"

@@ -1,60 +1,15 @@
-= Print This: Asciidoctor Quick Start
+= Asciidoctor EPUB3 lists bug repro
 :author: Adam Monsen
 :copyright: (C)2024 {author}
 :license: CC0 1.0 (Creative Commons CC0 1.0 Universal)
 :doctype: book
 :docinfo:
-:toc: macro
-:toclevels: 3
-:keywords: writing, asciidoctor, book, print
-// doesn't appear to be used in PDF output.
-:description: Free and Open Source printed book template using Asciidoctor-PDF.
 :revnumber: {build_git_commit}
 :revdate: {build_date_time}
 :revremark: {build_locale_lang}
-:sectnums:
 :imagesdir: img
-:icons: font
-:xrefstyle: full
-:hide-uri-scheme:
-:source-highlighter: pygments
-:pygments-linenums-mode: inline
-:!chapter-signifier:
-:!webfonts:
-:pdf-theme: print-theme.yml
-// necessary for keyboard macro (kbd)
-:experimental:
-// optimize for printing
-:media: prepress
-
-[colophon%notitle%nonfacing]
-== Colophon
-
-_{doctitle}_
- +
- +
-First published in 2024 by Sunrise Data Press (https://sunrisedata.io).
- +
- +
-Seattle, Washington, USA.
- +
- +
-{copyright}
- +
- +
-This book is designed by {author} and typeset with Asciidoctor-PDF.
-Fonts are Asciidoctor-PDF defaults including NotoSerif and NotoEmoji.
- +
- +
-License: {license}
-
-toc::[]
 
 == Introduction
-
-(((welcome)))
-Welcome to _Print This_!
-And--before you ask--yes, you should!
 
 == Version
 
@@ -66,23 +21,48 @@ This book was generated
 * from `{docname}{docfilesuffix}` at commit *{build_git_commit}*
 * using *{build_os_release}*
 
-== AsciiDoc examples
+.An image
+image::printer.png[]
 
-(((AsciiDoc)))
-Find more at https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/.
+.An image with an ID
+[#image-with-id]
+image::printer.png[]
 
-=== Some prose
+== Some prose
 
-(((AsciiDoc, prose)))
+.A code snippet
+----
+blah
+foo
+bar
+----
+
+.A code snippet with an ID
+[#snippet-with-id]
+----
+blah
+foo
+bar
+----
+
 Here's some prose.
 
 Now hear this.
-(((lorem ipsum)))
 Let the lorem ipsum begin.
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
 At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
+.A sidebar
+****
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+****
+
+.A sidebar with an ID
+[#sidebar-with-id]
+****
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+****
+
 At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 That's the last of it.
 But there might be some more later.
@@ -90,134 +70,7 @@ But there might be some more later.
 Note how we use one sentence per line.
 Read more about this at https://asciidoctor.org/docs/asciidoc-recommended-practices/.
 
-=== Bullet list
-
-(((AsciiDoc, bullet list)))
-Here's a bullet list.
-
-* foo
-** sub-foo
-* bar
-* baz
-
-=== Numbered list
-
-(((AsciiDoc, numbered list)))
-Here's a numbered list.
-
-. foo
-.. sub-foo
-. bar
-. baz
-
-=== A table
-
-(((AsciiDoc, table)))
-Here's a table.
-
-|===
-|ID |Description |Status |Resolution Details
-
-|ad01 |add usage info |OPEN |tbd
-|ad02 |translate to any language besides English |OPEN |tbd
-|ad03 |support Lulu |OPEN |tbd
-|ad04 |support another printer/publisher besides Lulu | OPEN |tbd
-|===
-
-=== Keyboard keys
-
-(((AsciiDoc, keyboard macro)))
-Increase zoom level with kbd:[Ctrl + +].
-
-Switch between windows with kbd:[Alt + Tab].
-
-=== Specials and formatting
-
-Here are some special characters and formatting examples.
-
-Emoji tent: ⛺, bento box: 🍱, foggy city: 🌁, barber pole: 💈.
-
-(((AsciiDoc, smart quotes)))
-Here's some text with "`smart quotes`" and emoji in the middle of a long paragraph, as well as some `monospace text`.
-Lorem ipsum dolor sit 👔 (necktie) 🧞 (genie) amet, consetetur sadipscing elitr, sed diam.
-Nonumy eirmod tempor invidunt ut labore et 💫 (dizzy) dolore magna aliquyam erat, sed diam voluptua.
-At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-
-You might see `here/is/a/very/long/nonsensical/and/monospaced/pseudo/word/broken/up/primarily/by/slashes/blah/foo/bar/baz/biff/theend`
-
-Or even here/is/a/very/long/nonsensical/pseudo/word/broken/up/primarily/by/slashes/blah/foo/bar/baz/biff/theend
-
-Here's a thematic break:
-
-'''
-
-Here's some more filler text for no reason.
-At vero eos et accusam et justo duo dolores et ea rebum.
-Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-
-=== Source code
-
-==== YAML
-
-(((AsciiDoc, source code block)))
-(((yaml)))
-Here is some annotated YAML source code.
-
-[source,yaml]
-----
-# snippet from foo/bar.yml
-services:
-  reverse-proxy:
-    websecure.port: 443 <1>
-
-# skipping ahead...
-services:
-  app:
-    labels:
-      - foo.port=websecure <2>
-      - foo.match=Host(cloud.example.com) <3>
-----
-
-<1> Tell `websecure` on the `reverse-proxy` service to accept traffic over port 443.
-
-<2> Connect `foo` with `websecure` on the `app` service.
-
-<3> Route traffic for `cloud.example.com` to `foo`.
-
-=== A quote
-
-____
-The future is already here--it's just not evenly distributed.
-____
-
-— William Gibson
-
-=== Admonitions
-
-NOTE: Some additional info...
-
-TIP: Pro tip...
-
-IMPORTANT: Don't forget...
-
-WARNING: Watch out for...
-
-CAUTION: Ensure that...
-
-=== References
-
-* Refer to <<AsciiDoc examples>>.
-* https://example.com[This text is hyperlinked].
-
-== Long chapter
-
-(((AsciiDoc, prose)))
-Here's a chapter with a lot of text.
-This may be useful for counting full pages of prose.
-I counted each using `wc`, excluding the paragraph number at the beginning of each.
-Word counts per paragraph:
-
+.A Made-up table
 |===
 |Paragraph |Word count
 
@@ -227,93 +80,33 @@ Word counts per paragraph:
 |4 |141
 |===
 
-1.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-Ut tellus elementum sagittis vitae et leo duis ut diam.
-Pellentesque adipiscing commodo elit at imperdiet dui.
-Duis at consectetur lorem donec massa sapien faucibus et molestie.
-At imperdiet dui accumsan sit amet nulla.
-Tortor aliquam nulla facilisi cras fermentum odio eu.
-Morbi tristique senectus et netus et malesuada fames.
-Auctor neque vitae tempus quam pellentesque nec nam aliquam.
-Enim neque volutpat ac tincidunt vitae semper quis.
-Non consectetur a erat nam.
-Adipiscing at in tellus integer feugiat scelerisque varius.
-Purus ut faucibus pulvinar elementum integer enim neque.
-Eu lobortis elementum nibh tellus molestie.
-Mi sit amet mauris commodo quis imperdiet massa tincidunt.
-Aliquam faucibus purus in massa tempor nec.
-Semper feugiat nibh sed pulvinar proin gravida hendrerit lectus.
-Nulla at volutpat diam ut venenatis tellus in metus vulputate.
-Neque ornare aenean euismod elementum.
+.A Made-up table with an ID
+[#table-with-id]
+|===
+|Paragraph |Word count
 
-2.
-Egestas integer eget aliquet nibh praesent tristique magna sit amet.
-Cras sed felis eget velit aliquet sagittis.
-Mi quis hendrerit dolor magna eget est lorem.
-Felis imperdiet proin fermentum leo vel orci porta non.
-Elementum tempus egestas sed sed risus pretium quam vulputate dignissim.
-Augue eget arcu dictum varius duis at.
-Commodo ullamcorper a lacus vestibulum sed.
-Leo integer malesuada nunc vel risus commodo viverra maecenas accumsan.
-Viverra suspendisse potenti nullam ac tortor vitae.
-Massa enim nec dui nunc mattis.
-Venenatis cras sed felis eget velit aliquet.
-Odio morbi quis commodo odio aenean sed adipiscing diam donec.
-Urna nec tincidunt praesent semper.
-Ultrices tincidunt arcu non sodales neque sodales.
-Sit amet commodo nulla facilisi nullam vehicula ipsum.
+|1 |153
+|2 |117
+|3 |139
+|4 |141
+|===
 
-3.
-Tempus quam pellentesque nec nam.
-Nibh cras pulvinar mattis nunc sed.
-At lectus urna duis convallis convallis tellus.
-Eleifend mi in nulla posuere.
-Vulputate ut pharetra sit amet aliquam id.
-Malesuada pellentesque elit eget gravida.
-Lacus viverra vitae congue eu consequat.
-Velit ut tortor pretium viverra suspendisse potenti nullam ac.
-Elit scelerisque mauris pellentesque pulvinar pellentesque.
-Arcu dui vivamus arcu felis bibendum.
-Sem nulla pharetra diam sit amet nisl suscipit adipiscing.
-Mauris vitae ultricies leo integer malesuada nunc.
-In aliquam sem fringilla ut morbi tincidunt augue.
-Lacus laoreet non curabitur gravida arcu ac.
-Orci a scelerisque purus semper.
-Tincidunt praesent semper feugiat nibh sed pulvinar proin gravida hendrerit.
-Bibendum enim facilisis gravida neque.
-Vestibulum lectus mauris ultrices eros in cursus turpis.
-Posuere sollicitudin aliquam ultrices sagittis orci a scelerisque purus.
-Faucibus pulvinar elementum integer enim neque volutpat ac tincidunt.
+== Cross references
 
-4.
-Nisl purus in mollis nunc.
-Eget nunc scelerisque viverra mauris in aliquam sem.
-Laoreet id donec ultrices tincidunt arcu non sodales neque sodales.
-Dui nunc mattis enim ut tellus elementum.
-Et netus et malesuada fames ac turpis egestas sed.
-Lorem ipsum dolor sit amet consectetur adipiscing elit pellentesque.
-Est pellentesque elit ullamcorper dignissim cras tincidunt.
-Neque volutpat ac tincidunt vitae semper quis lectus nulla.
-Suspendisse ultrices gravida dictum fusce ut placerat.
-Tincidunt lobortis feugiat vivamus at augue eget arcu.
-Dui ut ornare lectus sit amet est placerat.
-Tortor aliquam nulla facilisi cras fermentum odio eu.
-Orci eu lobortis elementum nibh tellus molestie nunc non.
-Sit amet aliquam id diam maecenas.
-Pellentesque habitant morbi tristique senectus et.
-Felis eget nunc lobortis mattis aliquam faucibus purus in massa.
-Nullam eget felis eget nunc lobortis mattis aliquam faucibus.
-Nec sagittis aliquam malesuada bibendum arcu.
+Here are lists of significant blocks of titled content.
 
-== Glossary
+=== Figures
 
-foo::
-  A short, meaningless word often used in throw-away code.
-bar::
-  Companion to foo.
-baz::
-  Companion to bar.
+list-of::image[]
 
-[index]
-== Index
+=== Tables
+
+list-of::table[]
+
+=== Sidebars
+
+list-of::sidebar[]
+
+=== Code snippets
+
+list-of::listing[]
